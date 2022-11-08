@@ -14,41 +14,41 @@ import java.util.List;
 public class UserController {
     @Autowired private UserService service;
 
-    @GetMapping("/users")
+    @GetMapping("/user/users")
     public String showUsersList(Model model){
         List<User> listUsers = service.listAll();
         model.addAttribute("listUsers", listUsers);
-        return "users";
+        return "user/users";
     }
 
-    @GetMapping("/users/new")
+    @GetMapping("/user/users/new")
     public String showNewForm(Model model){
         model.addAttribute("user", new User());
         model.addAttribute("pageTitle", "Add new user");
-        return "user_form";
+        return "user/user_form";
     }
 
     @PostMapping("/users/save")
     public String saveUser(User user, RedirectAttributes ra){
         service.save(user);
         ra.addFlashAttribute("message", "The user has been saved successfully");
-        return "redirect:/users";
+        return "redirect:/user/users";
     }
 
-    @GetMapping("/users/edit/{id}")
+    @GetMapping("/user/users/edit/{id}")
     public String showEditForm(@PathVariable("id") Integer id, Model model, RedirectAttributes ra){
         try {
             User user = service.get(id);
             model.addAttribute("user", user);
             model.addAttribute("pageTitle", "Edit user (Id :" + id +")");
-            return "user_form";
+            return "user/user_form";
         } catch (UserNotFoundException e) {
             ra.addFlashAttribute("message", e.getMessage());
-            return "redirect:/users";
+            return "redirect:/user/users";
         }
     }
 
-    @GetMapping("/users/delete/{id}")
+    @GetMapping("/user/users/delete/{id}")
     public String deleteUser(@PathVariable("id") Integer id, RedirectAttributes ra){
         try {
             service.delete(id);
@@ -56,6 +56,6 @@ public class UserController {
         } catch (UserNotFoundException e) {
             ra.addFlashAttribute("message", e.getMessage());
         }
-        return "redirect:/users";
+        return "redirect:/user/users";
     }
 }
