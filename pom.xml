@@ -45,6 +45,26 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>nz.net.ultraq.thymeleaf</groupId>
+            <artifactId>thymeleaf-joda-dialect</artifactId>
+            <version>2.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>nz.net.ultraq.web.thymeleaf</groupId>
+            <artifactId>thymeleaf-layout-dialect</artifactId>
+            <version>1.0.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.zhanhb</groupId>
+            <artifactId>thymeleaf-layout-dialect</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>ch.mfrey.thymeleaf.extras.with</groupId>
+            <artifactId>thymeleaf-with-dialect</artifactId>
+            <version>3.0.1</version>
+        </dependency>
     </dependencies>
 
     <build>

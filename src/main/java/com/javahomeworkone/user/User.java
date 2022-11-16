@@ -1,5 +1,9 @@
 package com.javahomeworkone.user;
+import com.javahomeworkone.category.Category;
+
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -21,6 +25,9 @@ public class User {
     private String lastName;
 
     private boolean enabled;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Category> categories;
 
     public Integer getId() {
         return id;
@@ -79,5 +86,13 @@ public class User {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
     }
 }

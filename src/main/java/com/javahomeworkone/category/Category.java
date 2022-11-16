@@ -1,6 +1,7 @@
 package com.javahomeworkone.category;
 
 import com.javahomeworkone.list.List;
+import com.javahomeworkone.user.User;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -19,8 +20,9 @@ public class Category {
 
     private Boolean enabled;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<List> lists;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     @Override
     public String toString() {
@@ -55,11 +57,11 @@ public class Category {
         this.enabled = enabled;
     }
 
-    public Set<com.javahomeworkone.list.List> getLists() {
-        return lists;
+    public User getUser() {
+        return user;
     }
 
-    public void setLists(Set<com.javahomeworkone.list.List> lists) {
-        this.lists = lists;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

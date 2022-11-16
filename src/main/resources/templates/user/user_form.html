@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
@@ -10,7 +11,7 @@
         crossorigin="anonymous">
 </head>
 <body>
-<div class="container-fluid align-items-center m-4 shadow-lg" style="max-width: 500px; margin: 0 auto;">
+<div class="container-fluid align-items-center m-4 shadow-lg" style="max-width: 500px; margin: 0 auto;" layout:fragment="content">
   <h1 align="center">[[${pageTitle}]]</h1>
   <form th:action="@{/users/save}" method="post" th:object="${user}">
     <input type="hidden" th:field="*{id}">
