@@ -1,6 +1,7 @@
 package com.javahomeworkone.list;
 
 import com.javahomeworkone.category.Category;
+import com.javahomeworkone.user.User;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -24,6 +25,10 @@ public class List {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public Integer getId() {
         return id;
@@ -73,5 +78,13 @@ public class List {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

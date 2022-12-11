@@ -8,10 +8,19 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
         crossorigin="anonymous">
   <title>Registration</title>
+  <style>
+    body {
+      height: 100%;
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 10px;
+    }
+  </style>
 </head>
 <body>
-<div class="container-fluid align-items-center m-4 shadow-lg" style="max-width: 500px; margin: 0 auto;">
-  <form th:action="@{/process_register}" method="post" th:object="${user}">
+<div class="h-100 align-items-center justify-content-center m-5" >
+  <form class=" m-auto" th:action="@{/process_register}" method="post" th:object="${user}">
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
       <input type="email" th:field="*{email}" class="form-control" id="exampleInputEmail1" placeholder="Enter email" minlength="5" required maxlength="45">

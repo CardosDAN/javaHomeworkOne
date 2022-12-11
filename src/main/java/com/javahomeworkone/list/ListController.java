@@ -1,8 +1,12 @@
 package com.javahomeworkone.list;
 
+import com.javahomeworkone.CustomUserDetails;
 import com.javahomeworkone.category.Category;
 import com.javahomeworkone.category.CategoryService;
+import com.javahomeworkone.user.User;
+import com.javahomeworkone.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +23,8 @@ public class ListController {
 
     @Autowired private CategoryService categoryService;
 
+    @Autowired private UserService userService;
+
     @GetMapping("/list/lists")
     public String showListsList(Model model){
         List<com.javahomeworkone.list.List> listLists = listService.listAll();
@@ -28,6 +34,7 @@ public class ListController {
 
     @GetMapping("/list/lists/new")
     public String showNewForm(Model model){
+        List<User> userList = userService.listAll();
         List<Category> categoryList = categoryService.listAll();
         model.addAttribute("categoryList", categoryList);
         model.addAttribute("list", new com.javahomeworkone.list.List());
@@ -37,6 +44,8 @@ public class ListController {
 
     @PostMapping("/lists/save")
     public String saveList(com.javahomeworkone.list.List list, RedirectAttributes ra){
+        var user = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        list.setUser(((CustomUserDetails) user).user);
         listService.save(list);
 
         ra.addFlashAttribute("message", "The list has been saved successfully");

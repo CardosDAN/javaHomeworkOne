@@ -10,8 +10,16 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
         crossorigin="anonymous">
 </head>
+<style>
+  body {
+    height: 100%;
+    max-width: 500px;
+    margin: auto;
+    padding: 10px;
+  }
+</style>
 <body>
-<div class="container-fluid align-items-center m-4 shadow-lg" style="max-width: 500px; margin: 0 auto;" layout:fragment="content">
+<div class="container-fluid align-items-center m-4 shadow-lg" layout:fragment="content">
   <h1 align="center">[[${pageTitle}]]</h1>
   <form th:action="@{/categories/save}" method="post" th:object="${category}">
     <input type="hidden" th:field="*{id}">

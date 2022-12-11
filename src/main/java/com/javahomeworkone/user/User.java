@@ -26,9 +26,6 @@ public class User {
 
     private boolean enabled;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private Set<Category> categories;
-
     public Integer getId() {
         return id;
     }
@@ -86,13 +83,5 @@ public class User {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
-    }
-
-    public Set<Category> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(Set<Category> categories) {
-        this.categories = categories;
     }
 }
