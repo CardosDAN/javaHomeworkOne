@@ -32,6 +32,15 @@ public class ListController {
         return "list/lists";
     }
 
+    @GetMapping("/list/show/{id}")
+    public String showList(@PathVariable("id")Integer listId, Model model) throws ListNotFoundException {
+        com.javahomeworkone.list.List list = listService.get(listId);
+        model.addAttribute("list", list);
+        List<Category> categoryList = categoryService.listAll();
+        model.addAttribute("categoryList", categoryList);
+        return "/list/show";
+    }
+
     @GetMapping("/list/lists/new")
     public String showNewForm(Model model){
         List<User> userList = userService.listAll();

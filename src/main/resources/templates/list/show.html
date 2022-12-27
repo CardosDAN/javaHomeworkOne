@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>[[${pageTitle}]]</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous">
+  <style>
+    body {
+      height: 100%;
+      max-width: 500px;
+      margin: auto;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="container-fluid align-items-center m-4 shadow-lg"  layout:fragment="content">
+  <h1 align="center">[[${pageTitle}]]</h1>
+  <div  th:object="${list}">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Title</label>
+      <input type="text" th:field="*{title}" class="form-control" id="exampleInputEmail1" th:value="*{title}" disabled>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail">Text</label>
+      <input type="text" th:value="*{text}" class="form-control" id="exampleInputEmail" disabled>
+    </div>
+    <div class="form-group">
+      <label>Category</label>
+      <select th:field="*{category}" class="form-control" required disabled>
+        <th:block th:each="cat : ${categoryList}">
+          <option th:text="${cat.name}" th:value="${cat.id}" />
+        </th:block>
+      </select>
+    </div>
+  </div>
+</div>
+
+</body>
+<script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+</html>

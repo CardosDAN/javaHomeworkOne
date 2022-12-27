@@ -29,7 +29,6 @@
           <th scope="col">Title</th>
           <th scope="col">Text</th>
           <th scope="col">Category</th>
-          <th scope="col">Enabled</th>
           <th scope="col">Actions</th>
         </tr>
         </thead>
@@ -40,9 +39,9 @@
             <td>[[${list.title}]]</td>
             <td>[[${list.text}]]</td>
             <td>[[${list.category.name}]]</td>
-            <td>[[${list.enabled}]]</td>
             <td>
               <a th:href="@{'/list/lists/edit/' + ${list.id}}" class="p-2 m-2">Edit</a>
+              <a th:href="@{'/list/show/' + ${list.id}}" class="p-2">Show</a>
               <a th:href="@{'/list/lists/delete/' + ${list.id}}" class="p-2">Delete</a>
             </td>
           </tr>

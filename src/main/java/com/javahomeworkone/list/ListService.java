@@ -34,4 +34,8 @@ public class ListService {
         }
         repo.deleteById(id);
     }
+
+    public List<com.javahomeworkone.list.List> findByKeyword(String keyword){
+        return repo.findByKeyword(keyword);
+    }
 }
