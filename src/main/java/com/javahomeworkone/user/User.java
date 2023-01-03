@@ -2,8 +2,9 @@ package com.javahomeworkone.user;
 import com.javahomeworkone.category.Category;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Set;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -12,19 +13,42 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotEmpty
+    @Email
     @Column(nullable = false, unique = true, length = 45)
     private String email;
 
+    @Size(min = 6, message = "Password should have at least 6 characters")
+    @NotEmpty
     @Column(length = 15, nullable = false)
     private String password;
 
+    @Size(min = 3, message = "User first name should have at least 3 characters")
+    @NotEmpty
     @Column(length = 45, nullable = false, name = "first_name")
     private String firstName;
 
+    @Size(min = 3, message = "User last name should have at least 3 characters")
+    @NotEmpty
     @Column(length = 45, nullable = false, name = "last_name")
     private String lastName;
 
     private boolean enabled;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", enabled=" + enabled +
+                ", admin=" + admin +
+                '}';
+    }
+
+    private boolean admin;
 
     public Integer getId() {
         return id;
@@ -66,22 +90,19 @@ public class User {
         this.lastName = lastName;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
-    }
-
     public boolean isEnabled() {
         return enabled;
     }
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
     }
 }

@@ -22,6 +22,7 @@
 <div class="align-items-center justify-content-center m-5" layout:fragment="content">
     <div class="card-body">
         <div class="container m-1" align="right">
+            <a th:href="@{/category/categories/new}" class="btn btn-info">Add new Category</a>
             <a th:href="@{/list/lists/new}" class="btn btn-info">Add new List</a>
         </div>
         <form th:action="@{/home}" method="get">

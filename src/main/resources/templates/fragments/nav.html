@@ -21,7 +21,8 @@
             </i>
           </a>
         </li>
-        <li class="nav-item dropdown">
+<!--        [[${#request.userPrincipal.principal.Admin}]]-->
+        <li th:if="${#request.userPrincipal.principal.Admin == true}" class="nav-item dropdown">
           <a class="nav-link mx-2 dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Manage
           </a>

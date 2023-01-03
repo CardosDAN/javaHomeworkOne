@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,7 +40,10 @@ public class CategoryController {
     }
 
     @PostMapping("/categories/save")
-    public String saveCategory(Category category, RedirectAttributes ra){
+    public String saveCategory(Category category, RedirectAttributes ra, BindingResult result, Model model){
+        if (result.hasErrors()){
+            return "category/category_form";
+        }
         var user = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         category.setUser(((CustomUserDetails) user).user);
         service.save(category);

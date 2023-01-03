@@ -4,6 +4,7 @@ import com.javahomeworkone.list.List;
 import com.javahomeworkone.user.User;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,6 +15,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotEmpty
     @Column(nullable = false, unique = true, length = 45, name = "name")
     private String name;
 
