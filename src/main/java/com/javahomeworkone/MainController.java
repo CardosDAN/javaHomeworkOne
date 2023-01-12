@@ -23,7 +23,9 @@ public class MainController {
     @Autowired private ListService listService;
 
     @GetMapping("")
-    public String showHmonePage(){
+    public String showHmonePage(Model model){
+        long count = repo.count();
+        model.addAttribute("count", count);
         return "index";
     }
 

@@ -27,34 +27,28 @@
         </div>
         <form th:action="@{/home}" method="get">
             <input id="txtSearch" type="text" name="keyword">
-            <button type="submit">Search</button>
+            <button type="submit" class="btn btn-primary">Search</button>
         </form>
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th scope="col">id</th>
-                <th scope="col">Title</th>
-                <th scope="col">Text</th>
-                <th scope="col">Category</th>
-                <th scope="col">Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <th:block th:each="list : ${listLists}">
-                <tr>
-                    <td>[[${list.id}]]</td>
-                    <td>[[${list.title}]]</td>
-                    <td>[[${list.text}]]</td>
-                    <td>[[${list.category.name}]]</td>
-                    <td>
-                        <a th:href="@{'/list/lists/edit/' + ${list.id}}" class="p-2 m-2">Edit</a>
-                        <a th:href="@{'/list/show/' + ${list.id}}" class="p-2">Show</a>
-                        <a th:href="@{'/list/lists/delete/' + ${list.id}}" class="p-2">Delete</a>
-                    </td>
-                </tr>
-            </th:block>
-            </tbody>
-        </table>
+        <div class="row">
+            <div class="col">
+                <th:block th:each="list : ${listLists}">
+                    <div class="card">
+                        <div class="card-header">
+                            [[${list.title}]]
+                        </div>
+                        <div class="card-body">
+                            <blockquote class="blockquote mb-0">
+                                <p>[[${list.text}]]</p>
+                                <footer class="blockquote-footer">[[${list.category.name}]]</footer>
+                                <a th:href="@{'/list/lists/edit/' + ${list.id}}" class="p-2 m-2">Edit</a>
+                                <a th:href="@{'/list/show/' + ${list.id}}" class="p-2">Show</a>
+                                <a th:href="@{'/list/lists/delete/' + ${list.id}}" class="p-2">Delete</a>
+                            </blockquote>
+                        </div>
+                    </div>
+                </th:block>
+            </div>
+        </div>
     </div>
 </div>
 
