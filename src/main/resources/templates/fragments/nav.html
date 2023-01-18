@@ -10,6 +10,9 @@
         <li class="nav-item">
           <a class="nav-link mx-2 text-dark " th:href="@{/home}">Home</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2 text-dark " th:href="@{/filesupload}">Upload file</a>
+        </li>
         <li class="nav-item d-none d-lg-block">
           <a class="nav-link mx-2" href="#">
             <i class="bi bi-clipboard-check">
@@ -21,6 +24,7 @@
             </i>
           </a>
         </li>
+
 <!--        [[${#request.userPrincipal.principal.Admin}]]-->
         <li th:if="${#request.userPrincipal.principal.Admin == true}" class="nav-item dropdown">
           <a class="nav-link mx-2 dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">

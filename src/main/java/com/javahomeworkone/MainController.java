@@ -42,6 +42,11 @@ public class MainController {
 
     }
 
+    @GetMapping("/filesupload")
+    public String index(){
+        return "filesupload";
+    }
+
     @GetMapping("/register")
     public String showSignupForm(Model model){
         model.addAttribute("user", new User());
