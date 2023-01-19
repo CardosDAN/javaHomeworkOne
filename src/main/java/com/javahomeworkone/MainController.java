@@ -21,6 +21,7 @@ public class MainController {
     private UserRepository repo;
 
     @Autowired private ListService listService;
+    @Autowired private CategoryService categoryService;
 
     @GetMapping("")
     public String showHmonePage(Model model){
@@ -32,11 +33,14 @@ public class MainController {
     @GetMapping("/home")
     public String showPage(Model model, String keyword){
         List<com.javahomeworkone.list.List> listList = listService.listAll();
-        if (keyword != null){
-            model.addAttribute("listLists", listService.findByKeyword(keyword));
-        }else {
-            model.addAttribute("listLists", listList);
-        }
+        List<Category> categories = categoryService.listAll();
+        model.addAttribute("listList", listList);
+        model.addAttribute("categories", categories);
+//        if (keyword != null){
+//            model.addAttribute("listLists", listService.findByKeyword(keyword));
+//        }else {
+//            model.addAttribute("listLists", listList);
+//        }
 
         return "home";
 

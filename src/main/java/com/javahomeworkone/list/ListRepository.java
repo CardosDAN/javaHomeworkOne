@@ -13,7 +13,7 @@ import java.util.List;
 public interface ListRepository extends CrudRepository<com.javahomeworkone.list.List, Integer> {
     public long countById(Integer id);
 
-    java.util.List<com.javahomeworkone.list.List> findByCategory(Category category, Sort sort);
+    java.util.List<com.javahomeworkone.list.List> findByCategoryId(int categoryId);
 
     List<com.javahomeworkone.list.List> findByUser(User user, Sort sort);
 
