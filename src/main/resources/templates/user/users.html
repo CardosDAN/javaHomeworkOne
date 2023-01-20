@@ -29,7 +29,6 @@
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
                     <th scope="col">E-mail</th>
-                    <th scope="col">Enabled</th>
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>
@@ -40,7 +39,6 @@
                         <td>[[${user.firstName}]]</td>
                         <td>[[${user.lastName}]]</td>
                         <td>[[${user.email}]]</td>
-                        <td>[[${user.enabled}]]</td>
                         <td>
                             <a th:href="@{'/user/users/edit/' + ${user.id}}" class="p-2 m-2">Edit</a>
                             <a th:href="@{'/user/users/delete/' + ${user.id}}" class="p-2">Delete</a>

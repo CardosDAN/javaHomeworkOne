@@ -52,6 +52,16 @@
                         <li><a class="dropdown-item" th:href="@{/list/lists}">Lists</a></li>
                     </ul>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link mx-2 dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink2"
+                       role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Elements
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                        <li><a class="dropdown-item" th:href="@{/list/lists/new}">Add a new list</a></li>
+                        <li><a class="dropdown-item" th:href="@{/category/categories/new}">Add a new Category</a></li>
+                    </ul>
+                </li>
             </ul>
             <div class="nav-item dropdown">
                 <a class="nav-link mx-2 dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink1" role="button"
@@ -60,13 +70,13 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <li><a class="dropdown-item">
+                        <a th:href="@{/user/users/edit/{id}(id=${#request.userPrincipal.principal.userId})}"
+                           class="dropdown-item">Edit profile</a>
+                    </a></li>
+                    <li><a class="dropdown-item">
                         <form th:action="@{/logout}" method="post">
                             <input class="btn btn-secondary" type="submit" value="Sign Out">
                         </form>
-                    </a></li>
-                    <li><a class="dropdown-item">
-                        <a th:href="@{/user/users/edit/{id}(id=${#request.userPrincipal.principal.userId})}"
-                           class="dropdown-item">Edit profile</a>
                     </a></li>
                 </ul>
             </div>
@@ -84,14 +94,9 @@
         </select>
     </div>
     <div class="row row-cols-1 row-cols-md-2 g-4" id="listsContainer">
-        <div class="col" >
 
-        </div>
     </div>
 </div>
-<!--                                <a th:href="@{'/list/lists/edit/' + ${list.id}}" class="p-2 m-2">Edit</a>-->
-<!--                                <a th:href="@{'/list/show/' + ${list.id}}" class="p-2">Show</a>-->
-<!--                                <a th:href="@{'/list/lists/delete/' + ${list.id}}" class="p-2">Delete</a>-->
 <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
@@ -111,7 +116,10 @@
                     postElement.append("<h5>" + list.title + "</h5>");
                     postElement.append("<p>" + list.text + "</p>");
                     postElement.append("<small>" + "Category: " + list.category.name + "</small>");
-                    postElement.append("<a th:href=\"@{'/list/lists/edit/' + ${list.id}}\">" +"Edit" + "</a>");
+                    postElement.append("<small>" + "Created by: " + list.user.firstName + "</small>");
+                    postElement.append("<a href='/list/show/" + list.id + "' class='btn btn-primary col-sm-2'>Show</a>");
+                    postElement.append("<a href='/list/lists/edit/" + list.id + "' class='btn btn-secondary col-sm-2'>Edit</a>");
+                    postElement.append("<a href='/list/lists/delete/" + list.id + "' class='btn btn-danger col-sm-2'>Delete</a>");
                     listsContainer.append(postElement);
                 });
             },

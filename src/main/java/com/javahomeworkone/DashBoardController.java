@@ -2,6 +2,7 @@ package com.javahomeworkone;
 
 import com.javahomeworkone.list.ListRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ public class DashBoardController {
 
     @GetMapping("/category/{categoryId}")
     public List<com.javahomeworkone.list.List> getListByCategory(@PathVariable int categoryId){
-        return listRepository.findByCategoryId(categoryId);
+        var user = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return listRepository.findByCategoryIdAndUser(categoryId, ((CustomUserDetails) user).user);
     }
 }

@@ -27,7 +27,6 @@
                 <tr>
                     <th scope="col">id</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Enabled</th>
                     <th scope="col">Actions</th>
                 </tr>
                 </thead>
@@ -36,7 +35,6 @@
                     <tr>
                         <td>[[${category.id}]]</td>
                         <td>[[${category.name}]]</td>
-                        <td>[[${category.enabled}]]</td>
                         <td>
                             <a th:href="@{'/category/categories/edit/' + ${category.id}}" class="p-2 m-2">Edit</a>
                             <a th:href="@{'/category/categories/delete/' + ${category.id}}" class="p-2">Delete</a>

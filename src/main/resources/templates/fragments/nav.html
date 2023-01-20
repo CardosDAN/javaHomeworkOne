@@ -43,13 +43,14 @@
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <li><a class="dropdown-item">
+            <a th:href="@{/user/users/edit/{id}(id=${#request.userPrincipal.principal.userId})}" class="dropdown-item">Edit profile</a>
+          </a></li>
+          <li><a class="dropdown-item">
             <form th:action="@{/logout}" method="post">
               <input class="btn btn-secondary" type="submit" value="Sign Out">
             </form>
           </a></li>
-          <li><a class="dropdown-item">
-            <a th:href="@{/user/users/edit/{id}(id=${#request.userPrincipal.principal.userId})}" class="dropdown-item">Edit profile</a>
-          </a></li>
+
         </ul>
       </div>
     </div>

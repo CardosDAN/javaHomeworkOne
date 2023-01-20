@@ -68,7 +68,7 @@ public class ListController {
             model.addAttribute("list", list);
             List<Category> categoryList = categoryService.listAll();
             model.addAttribute("categoryList", categoryList);
-            model.addAttribute("pageTitle", " Edit user (ID : " + id  +")");
+            model.addAttribute("pageTitle", " Edit list (ID : " + id  +")");
             return "list/list_form";
         }catch (ListNotFoundException e){
             ra.addFlashAttribute("message", e.getMessage());

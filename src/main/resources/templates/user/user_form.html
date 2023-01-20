@@ -42,9 +42,13 @@
       <input type="text" th:field="*{lastName}" class="form-control" id="exampleInputLastName" placeholder="Cardos" minlength="5" required maxlength="45">
     </div>
     <div class="form-check">
-      <input type="checkbox" th:field="*{enabled}" class="form-check-input" id="exampleCheck1">
-      <label class="form-check-label" for="exampleCheck1">Are you sure?</label>
+      <input type="checkbox" th:field="*{admin}" class="form-check-input" id="exampleCheckadmin">
+      <label class="form-check-label" for="exampleCheckadmin">Is Admin</label>
     </div>
+<!--    <div class="form-check float-end">-->
+<!--      <input type="checkbox" th:field="*{enabled}" class="form-check-input" id="exampleCheck1">-->
+<!--      <label class="form-check-label" for="exampleCheck1">Are you sure?</label>-->
+<!--    </div>-->
     <button type="submit" class="btn btn-primary m-2">Submit</button>
     <button type="button" class="btn btn-secondary m-2" onclick="cancelForm()">Cancel</button>
   </form>
@@ -53,7 +57,7 @@
 </body>
 <script type="text/javascript">
   function cancelForm(){
-    window.location = "[[@{/users}]]";
+    window.location = "[[@{/user/users}]]";
   }
 </script>
 <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
